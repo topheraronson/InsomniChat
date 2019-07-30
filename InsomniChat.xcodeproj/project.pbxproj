@@ -9,12 +9,13 @@
 /* Begin PBXBuildFile section */
 		6B37758812F40033E697B597 /* Pods_InsomniChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E4E723BF9A6A43DD42D7191 /* Pods_InsomniChat.framework */; };
 		EC5E61AD22EFB0CC00EC366F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EC5E61AC22EFB0CC00EC366F /* AppDelegate.m */; };
-		EC5E61B022EFB0CC00EC366F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC5E61AF22EFB0CC00EC366F /* ViewController.m */; };
 		EC5E61B322EFB0CC00EC366F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC5E61B122EFB0CC00EC366F /* Main.storyboard */; };
 		EC5E61B522EFB0CD00EC366F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC5E61B422EFB0CD00EC366F /* Assets.xcassets */; };
 		EC5E61B822EFB0CD00EC366F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC5E61B622EFB0CD00EC366F /* LaunchScreen.storyboard */; };
 		EC5E61BB22EFB0CD00EC366F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EC5E61BA22EFB0CD00EC366F /* main.m */; };
 		EC5E61C222EFB32200EC366F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EC5E61C122EFB32100EC366F /* GoogleService-Info.plist */; };
+		EC7D69FD22F0B85D00674066 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7D69FC22F0B85D00674066 /* LoginViewController.swift */; };
+		EC7D6A0022F0B99300674066 /* KRCAppController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC7D69FF22F0B99300674066 /* KRCAppController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,14 +25,16 @@
 		EC5E61A822EFB0CC00EC366F /* InsomniChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InsomniChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC5E61AB22EFB0CC00EC366F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		EC5E61AC22EFB0CC00EC366F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		EC5E61AE22EFB0CC00EC366F /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		EC5E61AF22EFB0CC00EC366F /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		EC5E61B222EFB0CC00EC366F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EC5E61B422EFB0CD00EC366F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EC5E61B722EFB0CD00EC366F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EC5E61B922EFB0CD00EC366F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EC5E61BA22EFB0CD00EC366F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		EC5E61C122EFB32100EC366F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		EC7D69FB22F0B85D00674066 /* InsomniChat-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "InsomniChat-Bridging-Header.h"; sourceTree = "<group>"; };
+		EC7D69FC22F0B85D00674066 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		EC7D69FE22F0B99300674066 /* KRCAppController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KRCAppController.h; sourceTree = "<group>"; };
+		EC7D69FF22F0B99300674066 /* KRCAppController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KRCAppController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +92,8 @@
 				EC5E61AB22EFB0CC00EC366F /* AppDelegate.h */,
 				EC5E61AC22EFB0CC00EC366F /* AppDelegate.m */,
 				EC5E61BA22EFB0CD00EC366F /* main.m */,
+				EC7D69FE22F0B99300674066 /* KRCAppController.h */,
+				EC7D69FF22F0B99300674066 /* KRCAppController.m */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -96,8 +101,8 @@
 		EC7D69F822F0B53500674066 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				EC5E61AE22EFB0CC00EC366F /* ViewController.h */,
-				EC5E61AF22EFB0CC00EC366F /* ViewController.m */,
+				EC7D69FC22F0B85D00674066 /* LoginViewController.swift */,
+				EC7D69FB22F0B85D00674066 /* InsomniChat-Bridging-Header.h */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -163,6 +168,7 @@
 				TargetAttributes = {
 					EC5E61A722EFB0CC00EC366F = {
 						CreatedOnToolsVersion = 10.3;
+						LastSwiftMigration = 1030;
 					};
 				};
 			};
@@ -245,8 +251,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EC5E61B022EFB0CC00EC366F /* ViewController.m in Sources */,
+				EC7D69FD22F0B85D00674066 /* LoginViewController.swift in Sources */,
 				EC5E61BB22EFB0CD00EC366F /* main.m in Sources */,
+				EC7D6A0022F0B99300674066 /* KRCAppController.m in Sources */,
 				EC5E61AD22EFB0CC00EC366F /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -390,15 +397,19 @@
 			baseConfigurationReference = 6E20F21D017FB121720294F5 /* Pods-InsomniChat.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 66AJPZAPLQ;
-				INFOPLIST_FILE = InsomniChat/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/InsomniChat/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.christopheraronson.InsomniChat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "InsomniChat/View Controllers/InsomniChat-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -408,15 +419,18 @@
 			baseConfigurationReference = BE445CD79D93766757E2974F /* Pods-InsomniChat.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 66AJPZAPLQ;
-				INFOPLIST_FILE = InsomniChat/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/InsomniChat/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.christopheraronson.InsomniChat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "InsomniChat/View Controllers/InsomniChat-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
