@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6B37758812F40033E697B597 /* Pods_InsomniChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E4E723BF9A6A43DD42D7191 /* Pods_InsomniChat.framework */; };
 		EC5E61AD22EFB0CC00EC366F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EC5E61AC22EFB0CC00EC366F /* AppDelegate.m */; };
 		EC5E61B022EFB0CC00EC366F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC5E61AF22EFB0CC00EC366F /* ViewController.m */; };
 		EC5E61B322EFB0CC00EC366F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC5E61B122EFB0CC00EC366F /* Main.storyboard */; };
@@ -17,6 +18,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4E4E723BF9A6A43DD42D7191 /* Pods_InsomniChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InsomniChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6E20F21D017FB121720294F5 /* Pods-InsomniChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InsomniChat.debug.xcconfig"; path = "Target Support Files/Pods-InsomniChat/Pods-InsomniChat.debug.xcconfig"; sourceTree = "<group>"; };
+		BE445CD79D93766757E2974F /* Pods-InsomniChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InsomniChat.release.xcconfig"; path = "Target Support Files/Pods-InsomniChat/Pods-InsomniChat.release.xcconfig"; sourceTree = "<group>"; };
 		EC5E61A822EFB0CC00EC366F /* InsomniChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InsomniChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC5E61AB22EFB0CC00EC366F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		EC5E61AC22EFB0CC00EC366F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -35,17 +39,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B37758812F40033E697B597 /* Pods_InsomniChat.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B7EA53C4E3ADC0679BE34833 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4E4E723BF9A6A43DD42D7191 /* Pods_InsomniChat.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		EC5E619F22EFB0CC00EC366F = {
 			isa = PBXGroup;
 			children = (
 				EC5E61AA22EFB0CC00EC366F /* InsomniChat */,
 				EC5E61A922EFB0CC00EC366F /* Products */,
+				ED9D0D3B373E6953A4B5447E /* Pods */,
+				B7EA53C4E3ADC0679BE34833 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -74,6 +89,16 @@
 			path = InsomniChat;
 			sourceTree = "<group>";
 		};
+		ED9D0D3B373E6953A4B5447E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6E20F21D017FB121720294F5 /* Pods-InsomniChat.debug.xcconfig */,
+				BE445CD79D93766757E2974F /* Pods-InsomniChat.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -81,9 +106,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EC5E61BE22EFB0CE00EC366F /* Build configuration list for PBXNativeTarget "InsomniChat" */;
 			buildPhases = (
+				BFB75C0D64C8D7DE13414D41 /* [CP] Check Pods Manifest.lock */,
 				EC5E61A422EFB0CC00EC366F /* Sources */,
 				EC5E61A522EFB0CC00EC366F /* Frameworks */,
 				EC5E61A622EFB0CC00EC366F /* Resources */,
+				A5E3B28C00E4A3C481AA9BFE /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -139,6 +166,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A5E3B28C00E4A3C481AA9BFE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-InsomniChat/Pods-InsomniChat-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-InsomniChat/Pods-InsomniChat-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-InsomniChat/Pods-InsomniChat-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BFB75C0D64C8D7DE13414D41 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-InsomniChat-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		EC5E61A422EFB0CC00EC366F /* Sources */ = {
@@ -287,6 +356,7 @@
 		};
 		EC5E61BF22EFB0CE00EC366F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6E20F21D017FB121720294F5 /* Pods-InsomniChat.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -304,6 +374,7 @@
 		};
 		EC5E61C022EFB0CE00EC366F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BE445CD79D93766757E2974F /* Pods-InsomniChat.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
