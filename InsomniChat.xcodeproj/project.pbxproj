@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		6B37758812F40033E697B597 /* Pods_InsomniChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E4E723BF9A6A43DD42D7191 /* Pods_InsomniChat.framework */; };
 		EC5E61AD22EFB0CC00EC366F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EC5E61AC22EFB0CC00EC366F /* AppDelegate.m */; };
-		EC5E61B322EFB0CC00EC366F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC5E61B122EFB0CC00EC366F /* Main.storyboard */; };
 		EC5E61B522EFB0CD00EC366F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC5E61B422EFB0CD00EC366F /* Assets.xcassets */; };
 		EC5E61B822EFB0CD00EC366F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC5E61B622EFB0CD00EC366F /* LaunchScreen.storyboard */; };
 		EC5E61BB22EFB0CD00EC366F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EC5E61BA22EFB0CD00EC366F /* main.m */; };
@@ -25,7 +24,6 @@
 		EC5E61A822EFB0CC00EC366F /* InsomniChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InsomniChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC5E61AB22EFB0CC00EC366F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		EC5E61AC22EFB0CC00EC366F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		EC5E61B222EFB0CC00EC366F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EC5E61B422EFB0CD00EC366F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EC5E61B722EFB0CD00EC366F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EC5E61B922EFB0CD00EC366F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -110,7 +108,6 @@
 		EC7D69F922F0B54A00674066 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				EC5E61B122EFB0CC00EC366F /* Main.storyboard */,
 				EC5E61B622EFB0CD00EC366F /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
@@ -146,7 +143,7 @@
 				EC5E61A422EFB0CC00EC366F /* Sources */,
 				EC5E61A522EFB0CC00EC366F /* Frameworks */,
 				EC5E61A622EFB0CC00EC366F /* Resources */,
-				A5E3B28C00E4A3C481AA9BFE /* [CP] Embed Pods Frameworks */,
+				481555B99147B21D87E8FF7D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -198,14 +195,13 @@
 				EC5E61B822EFB0CD00EC366F /* LaunchScreen.storyboard in Resources */,
 				EC5E61C222EFB32200EC366F /* GoogleService-Info.plist in Resources */,
 				EC5E61B522EFB0CD00EC366F /* Assets.xcassets in Resources */,
-				EC5E61B322EFB0CC00EC366F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		A5E3B28C00E4A3C481AA9BFE /* [CP] Embed Pods Frameworks */ = {
+		481555B99147B21D87E8FF7D /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -261,14 +257,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		EC5E61B122EFB0CC00EC366F /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				EC5E61B222EFB0CC00EC366F /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		EC5E61B622EFB0CD00EC366F /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

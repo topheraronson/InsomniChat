@@ -7,24 +7,74 @@
 //
 
 import UIKit
+import FirebaseAuth
 
+@objc(KRCLoginViewController)
 class LoginViewController: UIViewController {
 
+    private var usernameTextField: UITextField = {
+        
+        let textField = UITextField()
+        textField.placeholder = "Tonights Username"
+        textField.font = UIFont.systemFont(ofSize: 15)
+        textField.borderStyle = UITextField.BorderStyle.roundedRect
+        
+        return textField
+    }()
+    
+    private var loginInButton: UIButton = {
+        
+        let button = UIButton(type: .system)
+        button.setTitle("Join Chat", for: .normal)
+        button.addTarget(self, action: #selector(signIn), for: .touchUpInside)
+        
+        return button
+    }()
+    
+    private var signOutButton: UIButton = {
+        
+        let button = UIButton(type: .system)
+        button.setTitle("Sign Out", for: .normal)
+        button.addTarget(self, action: #selector(signOut), for: .touchUpInside)
+        
+        return button
+    }()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        view.backgroundColor = .white
+        
+        let stackView = UIStackView(arrangedSubviews: [usernameTextField, loginInButton, signOutButton])
+//        stackView.alignment = .fill
+        stackView.distribution = .fill
+        stackView.axis = .vertical
+        stackView.spacing = 8
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        view.addSubview(stackView)
+        
+        stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        stackView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: -24).isActive = true
+        stackView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor, constant: 24).isActive = true
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @objc private func signIn() {
+        print("join tapped")
+        Auth.auth().signInAnonymously()
     }
-    */
+    
+    @objc private func signOut() {
+        
+        do {
+            try Auth.auth().signOut()
+            print("signed out")
+        } catch {
+            print("Could not sign out")
+        }
+        
+    }
 
 }

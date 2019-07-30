@@ -7,6 +7,7 @@
 //
 
 #import "KRCAppController.h"
+#import "InsomniChat-Swift.h"
 
 @import Firebase;
 
@@ -30,7 +31,7 @@
     
     if (self) {
         
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleStateChange) name:@"AuthStateDidChange" object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleStateChange) name:@"Notification.Name.AuthStateDidChange" object:nil];
     }
     
     return self;
@@ -42,11 +43,7 @@
 
 - (void)showWindow:(UIWindow *)window {
     
-    [FIRApp configure];
-    
-    [self setWindow:window];
-    
-    [[self window] makeKeyAndVisible];
+
 }
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "InsomniChat-Swift.h"
 
 @import Firebase;
 
@@ -20,6 +21,13 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     [FIRApp configure];
+    
+    [self setWindow:[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]]];
+    
+    KRCLoginViewController *loginVC = [[KRCLoginViewController alloc] init];
+    
+    [[self window] setRootViewController:loginVC];
+    [[self window] makeKeyAndVisible];
     
     return YES;
 }
