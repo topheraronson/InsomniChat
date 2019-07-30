@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -75,18 +75,50 @@
 		EC5E61AA22EFB0CC00EC366F /* InsomniChat */ = {
 			isa = PBXGroup;
 			children = (
-				EC5E61AB22EFB0CC00EC366F /* AppDelegate.h */,
-				EC5E61AC22EFB0CC00EC366F /* AppDelegate.m */,
-				EC5E61AE22EFB0CC00EC366F /* ViewController.h */,
-				EC5E61AF22EFB0CC00EC366F /* ViewController.m */,
-				EC5E61B122EFB0CC00EC366F /* Main.storyboard */,
-				EC5E61B422EFB0CD00EC366F /* Assets.xcassets */,
-				EC5E61B622EFB0CD00EC366F /* LaunchScreen.storyboard */,
-				EC5E61B922EFB0CD00EC366F /* Info.plist */,
-				EC5E61BA22EFB0CD00EC366F /* main.m */,
-				EC5E61C122EFB32100EC366F /* GoogleService-Info.plist */,
+				EC7D69F722F0B51800674066 /* App */,
+				EC7D69F822F0B53500674066 /* View Controllers */,
+				EC7D69F922F0B54A00674066 /* Storyboards */,
+				EC7D69FA22F0B55800674066 /* Resources */,
 			);
 			path = InsomniChat;
+			sourceTree = "<group>";
+		};
+		EC7D69F722F0B51800674066 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				EC5E61AB22EFB0CC00EC366F /* AppDelegate.h */,
+				EC5E61AC22EFB0CC00EC366F /* AppDelegate.m */,
+				EC5E61BA22EFB0CD00EC366F /* main.m */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		EC7D69F822F0B53500674066 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				EC5E61AE22EFB0CC00EC366F /* ViewController.h */,
+				EC5E61AF22EFB0CC00EC366F /* ViewController.m */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		EC7D69F922F0B54A00674066 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				EC5E61B122EFB0CC00EC366F /* Main.storyboard */,
+				EC5E61B622EFB0CD00EC366F /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		EC7D69FA22F0B55800674066 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				EC5E61B422EFB0CD00EC366F /* Assets.xcassets */,
+				EC5E61B922EFB0CD00EC366F /* Info.plist */,
+				EC5E61C122EFB32100EC366F /* GoogleService-Info.plist */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		ED9D0D3B373E6953A4B5447E /* Pods */ = {
@@ -95,7 +127,6 @@
 				6E20F21D017FB121720294F5 /* Pods-InsomniChat.debug.xcconfig */,
 				BE445CD79D93766757E2974F /* Pods-InsomniChat.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
