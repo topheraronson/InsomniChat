@@ -9,6 +9,7 @@
 import UIKit
 import FirebaseAuth
 
+
 @objc(KRCLoginViewController)
 class LoginViewController: UIViewController {
 
@@ -46,6 +47,10 @@ class LoginViewController: UIViewController {
         
         view.backgroundColor = .white
         
+        if Auth.auth().currentUser != nil {
+            print("\n\n\nalready logged in\n\n\n")
+        }
+        
         let stackView = UIStackView(arrangedSubviews: [usernameTextField, loginInButton, signOutButton])
 //        stackView.alignment = .fill
         stackView.distribution = .fill
@@ -62,8 +67,29 @@ class LoginViewController: UIViewController {
     }
     
     @objc private func signIn() {
-        print("join tapped")
-        Auth.auth().signInAnonymously()
+        
+        guard let displayName = usernameTextField.text, !displayName.isEmpty else { return }
+        
+         print("join tapped")
+        
+        Auth.auth().signInAnonymously { (results, error) in
+            
+            if let error = error {
+                print("Could not sign in: \(error.localizedDescription)")
+                return
+            }
+            
+            guard let user = results?.user else { return }
+            
+            UserDefaults.standard.set(displayName, forKey: "displayName")
+            
+            self.findChannel()
+            
+            //let vc = ChatViewController(user: user, displayName: displayName, chatRoomName: "")
+//            self.present(vc, animated: true)
+        }
+        
+        
     }
     
     @objc private func signOut() {
@@ -75,6 +101,11 @@ class LoginViewController: UIViewController {
             print("Could not sign out")
         }
         
+    }
+    
+    private func findChannel() {
+        
+        print("Found channel")
     }
 
 }

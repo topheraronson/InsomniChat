@@ -14,7 +14,9 @@
 		EC5E61BB22EFB0CD00EC366F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EC5E61BA22EFB0CD00EC366F /* main.m */; };
 		EC5E61C222EFB32200EC366F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EC5E61C122EFB32100EC366F /* GoogleService-Info.plist */; };
 		EC7D69FD22F0B85D00674066 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7D69FC22F0B85D00674066 /* LoginViewController.swift */; };
-		EC7D6A0022F0B99300674066 /* KRCAppController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC7D69FF22F0B99300674066 /* KRCAppController.m */; };
+		EC7D6A0A22F0FC5F00674066 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7D6A0922F0FC5F00674066 /* ChatViewController.swift */; };
+		EC7D6A1122F1014600674066 /* ChatUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7D6A1022F1014600674066 /* ChatUser.swift */; };
+		EC7D6A1322F102B200674066 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7D6A1222F102B200674066 /* Message.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,8 +33,9 @@
 		EC5E61C122EFB32100EC366F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		EC7D69FB22F0B85D00674066 /* InsomniChat-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "InsomniChat-Bridging-Header.h"; sourceTree = "<group>"; };
 		EC7D69FC22F0B85D00674066 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		EC7D69FE22F0B99300674066 /* KRCAppController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KRCAppController.h; sourceTree = "<group>"; };
-		EC7D69FF22F0B99300674066 /* KRCAppController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KRCAppController.m; sourceTree = "<group>"; };
+		EC7D6A0922F0FC5F00674066 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		EC7D6A1022F1014600674066 /* ChatUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatUser.swift; sourceTree = "<group>"; };
+		EC7D6A1222F102B200674066 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +79,7 @@
 		EC5E61AA22EFB0CC00EC366F /* InsomniChat */ = {
 			isa = PBXGroup;
 			children = (
+				EC7D6A0322F0E4A900674066 /* Models */,
 				EC7D69F722F0B51800674066 /* App */,
 				EC7D69F822F0B53500674066 /* View Controllers */,
 				EC7D69F922F0B54A00674066 /* Storyboards */,
@@ -90,8 +94,6 @@
 				EC5E61AB22EFB0CC00EC366F /* AppDelegate.h */,
 				EC5E61AC22EFB0CC00EC366F /* AppDelegate.m */,
 				EC5E61BA22EFB0CD00EC366F /* main.m */,
-				EC7D69FE22F0B99300674066 /* KRCAppController.h */,
-				EC7D69FF22F0B99300674066 /* KRCAppController.m */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -101,6 +103,7 @@
 			children = (
 				EC7D69FC22F0B85D00674066 /* LoginViewController.swift */,
 				EC7D69FB22F0B85D00674066 /* InsomniChat-Bridging-Header.h */,
+				EC7D6A0922F0FC5F00674066 /* ChatViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -121,6 +124,15 @@
 				EC5E61C122EFB32100EC366F /* GoogleService-Info.plist */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		EC7D6A0322F0E4A900674066 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				EC7D6A1022F1014600674066 /* ChatUser.swift */,
+				EC7D6A1222F102B200674066 /* Message.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		ED9D0D3B373E6953A4B5447E /* Pods */ = {
@@ -249,8 +261,10 @@
 			files = (
 				EC7D69FD22F0B85D00674066 /* LoginViewController.swift in Sources */,
 				EC5E61BB22EFB0CD00EC366F /* main.m in Sources */,
-				EC7D6A0022F0B99300674066 /* KRCAppController.m in Sources */,
+				EC7D6A0A22F0FC5F00674066 /* ChatViewController.swift in Sources */,
+				EC7D6A1322F102B200674066 /* Message.swift in Sources */,
 				EC5E61AD22EFB0CC00EC366F /* AppDelegate.m in Sources */,
+				EC7D6A1122F1014600674066 /* ChatUser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
