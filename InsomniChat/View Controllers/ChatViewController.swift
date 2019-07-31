@@ -10,6 +10,7 @@ import UIKit
 import MessageKit
 import InputBarAccessoryView
 import Firebase
+import FirebaseFirestore
 
 class ChatViewController: MessagesViewController {
 
@@ -19,6 +20,10 @@ class ChatViewController: MessagesViewController {
     var messages = [Message]()
     
     let refreshControl = UIRefreshControl()
+    
+    let db = Firestore.firestore()
+    var reference: CollectionReference?
+    var messageListener: ListenerRegistration?
     
     init(user: User, displayName: String, chatRoomName: String) {
         
@@ -35,6 +40,8 @@ class ChatViewController: MessagesViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        reference = db.collection(["chatRoom", chatRoomName, "thread"].joined(separator: "/"))
 
         messagesCollectionView.messagesDataSource = self
         messagesCollectionView.messagesDisplayDelegate = self
@@ -74,35 +81,7 @@ extension ChatViewController: MessagesDataSource {
     func numberOfSections(in messagesCollectionView: MessagesCollectionView) -> Int {
         return messages.count
     }
-    
-    
-//    func currentSender() -> SenderType {
-//
-//        guard let user = user,
-//        let displayName = UserDefaults.standard.string(forKey: "displayName")
-//        else {
-//            fatalError("No user")
-//        }
-//
-//        //return Sender(id: user.uid, displayName: displayName)
-//
-//        return SenderType
-//    }
-//
-//    func numberOfMessages(in messagesCollectionView: MessagesCollectionView) -> Int {
-//        return messages.count
-//    }
-//
-//    func messageForItem(at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> MessageType {
-//        return messages[indexPath.section]
-//    }
-//
-//    func cellTopLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
-//
-//        let name = message.sender.displayName
-//
-//        return NSAttributedString(string: name, attributes: [.font: UIFont.preferredFont(forTextStyle: .caption1), .foregroundColor: UIColor(white: 0.3, alpha: 1)])
-//    }
+
 }
 
 // MARK: - MessagesDisplayDelegate

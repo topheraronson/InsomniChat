@@ -8,7 +8,8 @@
 
 import UIKit
 import FirebaseAuth
-
+import Firebase
+import FirebaseFirestore
 
 @objc(KRCLoginViewController)
 class LoginViewController: UIViewController {
@@ -41,6 +42,7 @@ class LoginViewController: UIViewController {
         return button
     }()
     
+    let db = Firestore.firestore()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,10 +85,10 @@ class LoginViewController: UIViewController {
             
             UserDefaults.standard.set(displayName, forKey: "displayName")
             
-            self.findChannel()
             
-            //let vc = ChatViewController(user: user, displayName: displayName, chatRoomName: "")
-//            self.present(vc, animated: true)
+            
+            let vc = ChatViewController(user: user, displayName: displayName, chatRoomName: self.findChannel())
+            self.present(vc, animated: true)
         }
         
         
@@ -103,9 +105,35 @@ class LoginViewController: UIViewController {
         
     }
     
-    private func findChannel() {
+    private func findChannel() -> String {
         
-        print("Found channel")
+        var chatRoomID = ""
+        
+        db.collection("chatRooms").whereField("roomFull", isEqualTo: false).getDocuments { query, error in
+            
+            if let error = error {
+                print("Error finding chat room: \(error.localizedDescription)")
+                return
+            }
+            
+            guard let document = query?.documents.first else {
+                
+                self.createChatRoom()
+                return
+            }
+            
+            // TODO: - add chat room id to user defaults
+            
+            chatRoomID = document.documentID
+            self.db.collection("chatRooms").document(document.documentID).setData(["roomFull": true], merge: true)
+        }
+        
+        return chatRoomID
+    }
+    
+    private func createChatRoom() {
+        
+        print("making a chat room")
     }
 
 }
