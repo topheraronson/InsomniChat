@@ -85,10 +85,22 @@ class LoginViewController: UIViewController {
             
             UserDefaults.standard.set(displayName, forKey: "displayName")
             
+            self.findChannel(completion: { (chatRoomName, error) in
+                
+                if let error = error {
+                    print("Error putting user into chat room: \(error)")
+                    return
+                }
+                
+                guard let chatRoomName = chatRoomName else { return }
+                
+                let vc = ChatViewController(user: user, displayName: displayName, chatRoomName: chatRoomName)
+                self.present(vc, animated: true)
+                
+                
+            })
             
-            
-            let vc = ChatViewController(user: user, displayName: displayName, chatRoomName: self.findChannel())
-            self.present(vc, animated: true)
+
         }
         
         
@@ -105,14 +117,12 @@ class LoginViewController: UIViewController {
         
     }
     
-    private func findChannel() -> String {
-        
-        var chatRoomID = ""
+    private func findChannel(completion: @escaping (String?, Error?) -> Void) {
         
         db.collection("chatRooms").whereField("roomFull", isEqualTo: false).getDocuments { query, error in
             
             if let error = error {
-                print("Error finding chat room: \(error.localizedDescription)")
+                completion(nil, error)
                 return
             }
             
@@ -123,12 +133,9 @@ class LoginViewController: UIViewController {
             }
             
             // TODO: - add chat room id to user defaults
-            
-            chatRoomID = document.documentID
             self.db.collection("chatRooms").document(document.documentID).setData(["roomFull": true], merge: true)
+            completion(document.documentID, nil)
         }
-        
-        return chatRoomID
     }
     
     private func createChatRoom() {

@@ -41,7 +41,19 @@ class ChatViewController: MessagesViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        reference = db.collection(["chatRoom", chatRoomName, "thread"].joined(separator: "/"))
+        reference = db.collection("chatRooms").document(chatRoomName).collection("thread")
+        
+        messageListener = reference?.addSnapshotListener{ query, error in
+            
+            guard let query = query else {
+                print("Error listingin for updates: \(error?.localizedDescription ?? "No Error")")
+                return
+            }
+            
+            query.documentChanges.forEach { change in
+                self.handleChange(change)
+            }
+        }
 
         messagesCollectionView.messagesDataSource = self
         messagesCollectionView.messagesDisplayDelegate = self
@@ -62,6 +74,10 @@ class ChatViewController: MessagesViewController {
     }
     
     private func insert(message: Message) {
+        
+    }
+    
+    private func handleChange(_ change: DocumentChange) {
         
     }
 
