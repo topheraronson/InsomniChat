@@ -51,7 +51,7 @@ class ChatViewController: MessagesViewController {
             }
             
             query.documentChanges.forEach { change in
-                self.handleChange(change)
+//                self.handleChange(change)
             }
         }
 
@@ -69,17 +69,70 @@ class ChatViewController: MessagesViewController {
     
     private func save(message: Message) {
         
-        print(message.kind)
+        var messageText = ""
         
+        switch message.kind {
+        case .text( let message):
+            messageText = message
+        default:
+            break
+        }
+        
+        let messageJSON = ["message": messageText, "messageID": message.messageId, "senderName": message.sender.displayName, "senderID": user.uid,"sendTime": message.sentDate] as [String : Any]
+        
+        reference?.addDocument(data: messageJSON, completion: { error in
+            
+            if let error = error {
+                print("Error sending message: \(error.localizedDescription)")
+                return
+            }
+            
+            self.messagesCollectionView.scrollToBottom()
+        })
     }
     
     private func insert(message: Message) {
         
-    }
-    
-    private func handleChange(_ change: DocumentChange) {
+//        guard !messages.contains(message) else { return }
         
+        messages.append(message)
+//        messages.sort()
+        
+        
+        
+        messagesCollectionView.reloadData()
+        
+        DispatchQueue.main.async {
+            self.messagesCollectionView.scrollToBottom()
+        }
     }
+
+    
+//    private func handleChange(_ change: DocumentChange) {
+    
+//        let messageJSON = change.document.data()
+//
+//        guard let id = messageJSON["messageID"] as? String,
+//        let senderID = messageJSON["senderID"] as? String,
+//        let messageText = messageJSON["message"] as? String,
+//        let timestamp = messageJSON["sendTime"] as? Timestamp,
+//        let senderName = messageJSON["senderName"] as? String
+//        else { return }
+//
+//        let sendTime = timestamp.dateValue()
+//
+//        switch change.type {
+//        case .added:
+//
+//            let sender = ChatUser(senderId:senderID, displayName: senderName)
+//            let message = Message(user: <#T##User#>, displaName: <#T##String#>, content: <#T##String#>)
+//
+//            insert(message: message)
+//        default:
+//            break
+//        }
+//
+//    }
 
 }
 
@@ -141,7 +194,7 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
         
         inputBar.inputTextView.text = ""
         
-        save(message: Message(sender: chatUser, messageId: UUID().uuidString, sentDate: Date(), kind: .text(text)))
+//        save(message: Message(user: user, content: ""))
         
     }
 }

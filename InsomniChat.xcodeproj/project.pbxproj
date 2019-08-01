@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6B37758812F40033E697B597 /* Pods_InsomniChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E4E723BF9A6A43DD42D7191 /* Pods_InsomniChat.framework */; };
+		EC4BA98622F3844500BC4EEB /* DBRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4BA98522F3844500BC4EEB /* DBRepresentation.swift */; };
 		EC5E61AD22EFB0CC00EC366F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EC5E61AC22EFB0CC00EC366F /* AppDelegate.m */; };
 		EC5E61B522EFB0CD00EC366F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC5E61B422EFB0CD00EC366F /* Assets.xcassets */; };
 		EC5E61B822EFB0CD00EC366F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC5E61B622EFB0CD00EC366F /* LaunchScreen.storyboard */; };
@@ -23,6 +24,7 @@
 		4E4E723BF9A6A43DD42D7191 /* Pods_InsomniChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InsomniChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E20F21D017FB121720294F5 /* Pods-InsomniChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InsomniChat.debug.xcconfig"; path = "Target Support Files/Pods-InsomniChat/Pods-InsomniChat.debug.xcconfig"; sourceTree = "<group>"; };
 		BE445CD79D93766757E2974F /* Pods-InsomniChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InsomniChat.release.xcconfig"; path = "Target Support Files/Pods-InsomniChat/Pods-InsomniChat.release.xcconfig"; sourceTree = "<group>"; };
+		EC4BA98522F3844500BC4EEB /* DBRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBRepresentation.swift; sourceTree = "<group>"; };
 		EC5E61A822EFB0CC00EC366F /* InsomniChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InsomniChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC5E61AB22EFB0CC00EC366F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		EC5E61AC22EFB0CC00EC366F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 			children = (
 				EC7D6A1022F1014600674066 /* ChatUser.swift */,
 				EC7D6A1222F102B200674066 /* Message.swift */,
+				EC4BA98522F3844500BC4EEB /* DBRepresentation.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -261,6 +264,7 @@
 			files = (
 				EC7D69FD22F0B85D00674066 /* LoginViewController.swift in Sources */,
 				EC5E61BB22EFB0CD00EC366F /* main.m in Sources */,
+				EC4BA98622F3844500BC4EEB /* DBRepresentation.swift in Sources */,
 				EC7D6A0A22F0FC5F00674066 /* ChatViewController.swift in Sources */,
 				EC7D6A1322F102B200674066 /* Message.swift in Sources */,
 				EC5E61AD22EFB0CC00EC366F /* AppDelegate.m in Sources */,
