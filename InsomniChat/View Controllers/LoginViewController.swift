@@ -33,28 +33,28 @@ class LoginViewController: UIViewController {
         return button
     }()
     
-    private var signOutButton: UIButton = {
-        
-        let button = UIButton(type: .system)
-        button.setTitle("Sign Out", for: .normal)
-        button.addTarget(self, action: #selector(signOut), for: .touchUpInside)
-        
-        return button
-    }()
+//    private var signOutButton: UIButton = {
+    
+//        let button = UIButton(type: .system)
+//        button.setTitle("Sign Out", for: .normal)
+//        button.addTarget(self, action: #selector(signOut), for: .touchUpInside)
+//
+//        return button
+//    }()
     
     let db = Firestore.firestore()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor(red:0.07, green:0.07, blue:0.07, alpha:1.0)
         
         if Auth.auth().currentUser != nil {
             
 //            signInNow()
         }
         
-        let stackView = UIStackView(arrangedSubviews: [usernameTextField, loginInButton, signOutButton])
+        let stackView = UIStackView(arrangedSubviews: [usernameTextField, loginInButton])
 //        stackView.alignment = .fill
         stackView.distribution = .fill
         stackView.axis = .vertical
@@ -108,17 +108,17 @@ class LoginViewController: UIViewController {
         
     }
     
-    @objc private func signOut() {
-        
-        do {
-            try Auth.auth().signOut()
-            print("signed out")
-        } catch {
-            print("Could not sign out")
-        }
-        
-    }
-    
+//    @objc private func signOut() {
+//
+//        do {
+//            try Auth.auth().signOut()
+//            print("signed out")
+//        } catch {
+//            print("Could not sign out")
+//        }
+//
+//    }
+
     private func signInNow() {
         
         Auth.auth().signInAnonymously { (results, error) in

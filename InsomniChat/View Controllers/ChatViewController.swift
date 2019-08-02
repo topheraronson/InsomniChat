@@ -75,6 +75,7 @@ class ChatViewController: MessagesViewController {
         do {
             
             try Auth.auth().signOut()
+            dismiss(animated: true)
         } catch {
             print("Could not log out")
         }
