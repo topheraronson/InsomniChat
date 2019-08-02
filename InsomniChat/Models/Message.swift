@@ -30,6 +30,15 @@ struct Message: MessageType {
         self.kind = MessageKind.text(self.content)
     }
     
+    init(displaName: String, content: String, senderID: String, sendDate: Date, messageID: String) {
+        
+        self.sender = ChatUser(senderId: senderID, displayName: displaName)
+        self.content = content
+        self.sentDate = sendDate
+        self.id = messageID
+        self.kind = MessageKind.text(self.content)
+    }
+    
     
     init?(document: QueryDocumentSnapshot) {
         let data = document.data()

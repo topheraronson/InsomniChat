@@ -50,7 +50,8 @@ class LoginViewController: UIViewController {
         view.backgroundColor = .white
         
         if Auth.auth().currentUser != nil {
-            print("\n\n\nalready logged in\n\n\n")
+            
+//            signInNow()
         }
         
         let stackView = UIStackView(arrangedSubviews: [usernameTextField, loginInButton, signOutButton])
@@ -95,7 +96,8 @@ class LoginViewController: UIViewController {
                 guard let chatRoomName = chatRoomName else { return }
                 
                 let vc = ChatViewController(user: user, displayName: displayName, chatRoomName: chatRoomName)
-                self.present(vc, animated: true)
+                let nav = UINavigationController(rootViewController: vc)
+                self.present(nav, animated: true)
                 
                 
             })
@@ -117,6 +119,25 @@ class LoginViewController: UIViewController {
         
     }
     
+    private func signInNow() {
+        
+        Auth.auth().signInAnonymously { (results, error) in
+            
+            if let error = error {
+                print("Could not sign in: \(error.localizedDescription)")
+                return
+            }
+                
+            guard let user = results?.user,
+            let displayName = UserDefaults.standard.string(forKey: "displayName"),
+            let chatRoomName = UserDefaults.standard.string(forKey: "chatRoom")
+            else { return }
+            
+            let vc = ChatViewController(user: user, displayName: displayName, chatRoomName: chatRoomName)
+            self.present(vc, animated: true)
+        }
+    }
+    
     private func findChannel(completion: @escaping (String?, Error?) -> Void) {
         
         db.collection("chatRooms").whereField("roomFull", isEqualTo: false).getDocuments { query, error in
@@ -128,19 +149,39 @@ class LoginViewController: UIViewController {
             
             guard let document = query?.documents.first else {
                 
-                self.createChatRoom()
+                self.createChatRoom(completion: { (chatRoom, error) in
+                    
+                    if let error = error {
+                        completion(nil, error)
+                        return
+                    }
+                    
+                    UserDefaults.standard.set(chatRoom, forKey: "chatRoom")
+                    completion(chatRoom, nil)
+                })
                 return
             }
             
-            // TODO: - add chat room id to user defaults
+            
+            UserDefaults.standard.set(document.documentID, forKey: "chatRoom")
             self.db.collection("chatRooms").document(document.documentID).setData(["roomFull": true], merge: true)
             completion(document.documentID, nil)
         }
     }
     
-    private func createChatRoom() {
+    private func createChatRoom(completion: @escaping (String?, Error?) -> Void) {
         
-        print("making a chat room")
+        var ref: DocumentReference?
+        
+        ref = db.collection("chatRooms").addDocument(data: ["roomFull": false]) { (error) in
+            
+            if let error = error {
+                completion(nil, error)
+                return
+            }
+            
+            completion(ref!.documentID, nil)
+        }
     }
 
 }

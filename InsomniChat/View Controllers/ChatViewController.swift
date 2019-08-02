@@ -11,6 +11,7 @@ import MessageKit
 import InputBarAccessoryView
 import Firebase
 import FirebaseFirestore
+import FirebaseAuth
 
 class ChatViewController: MessagesViewController {
 
@@ -41,6 +42,8 @@ class ChatViewController: MessagesViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Sign Out", style: .plain, target: self, action: #selector(signOutTapped))
+        
         reference = db.collection("chatRooms").document(chatRoomName).collection("thread")
         
         messageListener = reference?.addSnapshotListener{ query, error in
@@ -51,7 +54,7 @@ class ChatViewController: MessagesViewController {
             }
             
             query.documentChanges.forEach { change in
-//                self.handleChange(change)
+                self.handleChange(change)
             }
         }
 
@@ -67,36 +70,35 @@ class ChatViewController: MessagesViewController {
 //        refreshControl.addTarget(self, action: #selector(loadMoreMessages), for: .valueChanged)
     }
     
+    @objc private func signOutTapped() {
+        
+        do {
+            
+            try Auth.auth().signOut()
+        } catch {
+            print("Could not log out")
+        }
+    }
+    
     private func save(message: Message) {
         
-        var messageText = ""
-        
-        switch message.kind {
-        case .text( let message):
-            messageText = message
-        default:
-            break
-        }
-        
-        let messageJSON = ["message": messageText, "messageID": message.messageId, "senderName": message.sender.displayName, "senderID": user.uid,"sendTime": message.sentDate] as [String : Any]
-        
-        reference?.addDocument(data: messageJSON, completion: { error in
+        reference?.addDocument(data: message.representation) { error in
             
             if let error = error {
-                print("Error sending message: \(error.localizedDescription)")
+                print("Error uploading message to db: \(error.localizedDescription)")
                 return
             }
             
             self.messagesCollectionView.scrollToBottom()
-        })
+        }
     }
     
     private func insert(message: Message) {
         
-//        guard !messages.contains(message) else { return }
+        guard !messages.contains(message) else { return }
         
         messages.append(message)
-//        messages.sort()
+        messages.sort()
         
         
         
@@ -107,36 +109,31 @@ class ChatViewController: MessagesViewController {
         }
     }
 
-    
-//    private func handleChange(_ change: DocumentChange) {
-    
-//        let messageJSON = change.document.data()
-//
-//        guard let id = messageJSON["messageID"] as? String,
-//        let senderID = messageJSON["senderID"] as? String,
-//        let messageText = messageJSON["message"] as? String,
-//        let timestamp = messageJSON["sendTime"] as? Timestamp,
-//        let senderName = messageJSON["senderName"] as? String
-//        else { return }
-//
-//        let sendTime = timestamp.dateValue()
-//
-//        switch change.type {
-//        case .added:
-//
-//            let sender = ChatUser(senderId:senderID, displayName: senderName)
-//            let message = Message(user: <#T##User#>, displaName: <#T##String#>, content: <#T##String#>)
-//
-//            insert(message: message)
-//        default:
-//            break
-//        }
-//
-//    }
-
+    private func handleChange(_ change: DocumentChange) {
+        
+        guard change.type == .added else { return }
+        
+        let data = change.document.data()
+        
+        guard let sentDate = data["created"] as? Timestamp else { return }
+        guard let senderID = data["senderID"] as? String else { return }
+        guard let senderName = data["senderName"] as? String else { return }
+        guard let content = data["content"] as? String else { return}
+        
+        let id = change.document.documentID
+        
+        
+        let message = Message(displaName: senderName, content: content, senderID: senderID, sendDate: sentDate.dateValue(), messageID: id)
+        
+        insert(message: message)
+    }
 }
 
 extension ChatViewController: MessagesDataSource {
+    func numberOfSections(in messagesCollectionView: MessagesCollectionView) -> Int {
+        return 1
+    }
+    
     func currentSender() -> SenderType {
 
         return chatUser
@@ -147,17 +144,18 @@ extension ChatViewController: MessagesDataSource {
     }
     
     
-    func numberOfSections(in messagesCollectionView: MessagesCollectionView) -> Int {
+    func numberOfItems(inSection section: Int, in messagesCollectionView: MessagesCollectionView) -> Int {
         return messages.count
     }
 
 }
 
+
 // MARK: - MessagesDisplayDelegate
 extension ChatViewController: MessagesDisplayDelegate {
     
     func backgroundColor(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> UIColor {
-        return isFromCurrentSender(message: message) ? .gray : .blue
+        return isFromCurrentSender(message: message) ? .blue : .gray
     }
     
     func shouldDisplayHeader(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> Bool {
@@ -194,7 +192,9 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
         
         inputBar.inputTextView.text = ""
         
-//        save(message: Message(user: user, content: ""))
+        guard let displayName = UserDefaults.standard.string(forKey: "displayName") else { return }
+        
+        save(message: Message(user: user, displaName: displayName, content: text))
         
     }
 }
